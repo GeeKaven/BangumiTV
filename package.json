@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "fastify start -l info ./api/index.js"
+    "start": "fastify start -l info ./app.js"
   },
   "repository": {
     "type": "git",
