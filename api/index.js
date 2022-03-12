@@ -22,6 +22,10 @@ const headers = {
   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
 }
 
+fastify.get('/', (request, reply) => {
+  reply.send({ hello: 'world' })
+})
+
 fastify.get('/bangumi', (request, reply) => {
   const { type, offset, limit } = request.query
   const filePath = `./data/${type}.json`
