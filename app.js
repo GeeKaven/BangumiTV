@@ -26,7 +26,7 @@ let __dirname = dirname(__filename)
 
 // 如果部署在 vercel 上，则使用 tmp 目录
 if (vercel) {
-  __dirname = tmpDir()
+  __dirname = tmpdir()
 }
 
 async function fetchCollection(type) {
