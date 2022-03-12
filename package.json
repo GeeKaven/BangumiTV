@@ -23,6 +23,7 @@
   "homepage": "https://github.com/GeeKaven/BangumiTV#readme",
   "dependencies": {
     "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
     "fastify": "^4.0.0-alpha.2"
   }
 }

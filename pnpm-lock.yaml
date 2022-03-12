@@ -2,10 +2,12 @@ lockfileVersion: 5.3
 
 specifiers:
   axios: ^0.26.1
+  dotenv: ^16.0.0
   fastify: ^4.0.0-alpha.2
 
 dependencies:
   axios: 0.26.1
+  dotenv: 16.0.0
   fastify: 4.0.0-alpha.2
 
 packages:
@@ -94,6 +96,11 @@ packages:
   /deepmerge/4.2.2:
     resolution: {integrity: sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /dotenv/16.0.0:
+    resolution: {integrity: sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==}
+    engines: {node: '>=12'}
     dev: false
 
   /duplexify/4.1.2:
