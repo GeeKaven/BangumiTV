@@ -50,6 +50,51 @@ async function fetchCollection(type) {
   return []
 }
 
+async function buildSubject() {
+  // 读取用户番剧收藏
+  const collectionMap = {
+    'want': await fetchCollection(collectionType['want']),
+    'watched': await fetchCollection(collectionType['watched']),
+    'watching': await fetchCollection(collectionType['watching'])
+  }
+
+  for (const key in collectionMap) {
+    if (Object.hasOwnProperty.call(collectionMap, key)) {
+      const collection = collectionMap[key];
+      const data = collection['data']
+      const newData = []
+      for (let i = 0; i < data.length; i++) {
+        const item = data[i];
+        const subjectId = parseInt(item['subject_id'])
+        try {
+          console.log(`- [INFO] Fetch ${key} - ${subjectId}. ${i}/${data.length}`)
+          const { data: subject } = await axios.get(`https://cdn.jsdelivr.net/gh/geekaven/BangumiTV-Subject@latest/data/${Math.floor(subjectId / 100)}/${subjectId}.json`)
+          item['date'] = subject['date']
+          item['images'] = subject['images']
+          item['name'] = subject['name']
+          item['name_cn'] = subject['name_cn']
+          item['summary'] = subject['summary']
+          item['total_episodes'] = subject['total_episodes']
+          item['eps'] = subject['eps']
+          newData.push(item)
+        } catch (error) {
+          console.log(`- [Error] ${key} - ${subjectId}. ${i}/${data.length}`)
+        }
+      }
+
+      const filePath = `${__dirname}/data/${key}.json`
+      const dirName = dirname(filePath)
+      if (!existsSync(dirName)) {
+        mkdirSync(dirName, { recursive: true })
+      }
+      console.log(`- [INFO] Write ${key} to ${filePath}`)
+      writeFileSync(filePath, JSON.stringify(newData))
+    }
+  }
+
+  console.log('- [INFO] Build Subject done.')
+}
+
 export default async function (fastify, opt) {
 
   fastify.register(Cors, {
@@ -72,48 +117,9 @@ export default async function (fastify, opt) {
   })
 
   fastify.get('/build_subject', async (request, reply) => {
-    // 读取用户番剧收藏
-    const collectionMap = {
-      'want': await fetchCollection(collectionType['want']),
-      'watched': await fetchCollection(collectionType['watched']),
-      'watching': await fetchCollection(collectionType['watching'])
-    }
-
-    for (const key in collectionMap) {
-      if (Object.hasOwnProperty.call(collectionMap, key)) {
-        const collection = collectionMap[key];
-        const data = collection['data']
-        const newData = []
-        for (let i = 0; i < data.length; i++) {
-          const item = data[i];
-          const subjectId = parseInt(item['subject_id'])
-          try {
-            console.log(`- [INFO] Fetch ${key} - ${subjectId}. ${i}/${data.length}`)
-            const { data: subject } = await axios.get(`https://cdn.jsdelivr.net/gh/geekaven/BangumiTV-Subject@latest/data/${Math.floor(subjectId / 100)}/${subjectId}.json`)
-            item['date'] = subject['date']
-            item['images'] = subject['images']
-            item['name'] = subject['name']
-            item['name_cn'] = subject['name_cn']
-            item['summary'] = subject['summary']
-            item['total_episodes'] = subject['total_episodes']
-            item['eps'] = subject['eps']
-            newData.push(item)
-          } catch (error) {
-            console.log(`- [Error] ${key} - ${subjectId}. ${i}/${data.length}`)
-          }
-        }
-
-        const filePath = `${__dirname}/data/${key}.json`
-        const dirName = dirname(filePath)
-        if (!existsSync(dirName)) {
-          mkdirSync(dirName, { recursive: true })
-        }
-        console.log(`- [INFO] Write ${key} to ${filePath}`)
-        writeFileSync(filePath, JSON.stringify(newData))
-      }
-    }
-
-    reply.send({ msg: 'Done' })
+    
+    buildSubject()
+    reply.send({ msg: 'Create build subject job' })
 
   })
 }
