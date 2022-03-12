@@ -1,9 +1,12 @@
+import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import { tmpdir } from 'os'
 import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'fs'
 import Cors from 'fastify-cors'
 import axios from 'axios'
 
 const bgmUser = process.env.BANGUMI_USER
+const vercel = process.env.VERCEL_URL
 const bgmUrl = 'https://api.bgm.tv'
 const subjectType = {
   'anime': 2,
@@ -16,6 +19,14 @@ const collectionType = {
 
 const headers = {
   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
+}
+
+const __filename = fileURLToPath(import.meta.url)
+let __dirname = dirname(__filename)
+
+// 如果部署在 vercel 上，则使用 tmp 目录
+if (vercel) {
+  __dirname = tmpDir()
 }
 
 async function fetchCollection(type) {
@@ -51,7 +62,7 @@ export default async function (fastify, opt) {
 
   fastify.get('/bangumi', (request, reply) => {
     const { type, offset, limit } = request.query
-    const filePath = `./data/${type}.json`
+    const filePath = `${__dirname}/data/${type}.json`
     if (!existsSync(filePath)) {
       reply.send({ msg: `No file ${type}` }).statusCode(404)
     }
@@ -92,7 +103,7 @@ export default async function (fastify, opt) {
           }
         }
 
-        const filePath = `./data/${key}.json`
+        const filePath = `${__dirname}/data/${key}.json`
         const dirName = dirname(filePath)
         if (!existsSync(dirName)) {
           mkdirSync(dirName, { recursive: true })
