@@ -1,0 +1,28 @@
+{
+  "name": "bangumitv",
+  "version": "1.0.0",
+  "description": "render your bangumi.tv progress on a static web page",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node api/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeeKaven/BangumiTV.git"
+  },
+  "keywords": [
+    "bangumi",
+    "anime"
+  ],
+  "author": "geekaven",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GeeKaven/BangumiTV/issues"
+  },
+  "homepage": "https://github.com/GeeKaven/BangumiTV#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "fastify": "^4.0.0-alpha.2"
+  }
+}
