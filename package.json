@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node api/index.js"
+    "start": "fastify start -l info ./api/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,8 @@
   "dependencies": {
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
-    "fastify": "^4.0.0-alpha.2"
+    "fastify": "^3.27.1",
+    "fastify-cli": "^2.15.0",
+    "fastify-cors": "^6.0.3"
   }
 }
