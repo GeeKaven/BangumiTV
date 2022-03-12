@@ -7,8 +7,7 @@ const fastify = Fastify({
   logger: true
 })
 
-// const bgmUser = process.env.BANGUMI_USER
-const bgmUser = 'geekaven'
+const bgmUser = process.env.BANGUMI_USER
 const bgmUrl = 'https://api.bgm.tv'
 const subjectType = {
   'anime': 2,
