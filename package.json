@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "fastify start -l info ./app.js"
+    "start": "fastify start -l info ./app.js",
+    "buildSubject": "node collection.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "dotenv": "^16.0.0",
     "fastify": "^3.27.1",
     "fastify-cli": "^2.15.0",
-    "fastify-cors": "^6.0.3"
+    "fastify-cors": "^6.0.3",
+    "fastify-static": "^4.5.0"
   }
 }
