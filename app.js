@@ -43,7 +43,7 @@ export default async function (fastify, opt) {
   fastify.addHook('onReady', async () => {
     for (const key in collectionMap) {
       if (Object.hasOwnProperty.call(collectionMap, key)) {
-        collectionMap[key] = await JSON.parse(readFileSync(`./data/${key}.json`, 'utf8'))
+        collectionMap[key] = await JSON.parse(readFileSync(`${__dirname}/data/${key}.json`, 'utf8'))
       }
     }
     console.log(`- [INFO] collection loaded.`)
