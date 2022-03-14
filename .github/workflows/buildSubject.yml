@@ -1,14 +1,12 @@
 name: Build Subject
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  schedule:
+    # Run “at minute 0 past every 2nd hour.” (see https://crontab.guru)
+    - cron: '0 */2 * * *'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
