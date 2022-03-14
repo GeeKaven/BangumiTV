@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "fastify start -l info ./app.js",
+    "dev": "fastify start -w -l info -P app.js",
     "buildSubject": "node collection.js"
   },
   "repository": {

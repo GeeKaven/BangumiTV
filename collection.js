@@ -60,7 +60,7 @@ async function getCollectionMap() {
       collection.push(...data)
     }
   }
-  
+
   const collectionMap = {
     'want': collection.filter(item => item['type'] === collectionType['want']),
     'watched': collection.filter(item => item['type'] === collectionType['watched']),
@@ -83,7 +83,7 @@ async function buildSubject() {
         const subjectId = parseInt(item['subject_id'])
         try {
           console.log(`- [INFO] Fetch ${key} - ${subjectId}. ${i}/${data.length}`)
-          const { data: subject } = await axios.get(`https://cdn.jsdelivr.net/gh/geekaven/BangumiTV-Subject@latest/data/${Math.floor(subjectId / 100)}/${subjectId}.json`)
+          const { data: subject } = await axios.get(`https://cdn.jsdelivr.net/gh/geekaven/BangumiTV-Subject@latest/data/${Math.floor(subjectId / 100)}/${subjectId}.json`, { headers: headers })
           item['date'] = subject['date']
           item['images'] = subject['images']
           item['name'] = subject['name']
@@ -93,7 +93,7 @@ async function buildSubject() {
           item['eps'] = subject['eps']
           newData.push(item)
         } catch (error) {
-          console.log(`- [Error] ${key} - ${subjectId}. ${i}/${data.length}`)
+          console.log(`- [Error] ${key} - ${subjectId}. ${i}/${data.length}. ${error}`)
         }
       }
 
@@ -103,7 +103,7 @@ async function buildSubject() {
         mkdirSync(dirName, { recursive: true })
       }
       console.log(`- [INFO] Write ${key} to ${filePath}`)
-      writeFileSync(filePath, JSON.stringify(newData))
+      writeFileSync(filePath, JSON.stringify({ data: newData, total: newData.length }))
     }
   }
 

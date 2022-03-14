@@ -21,7 +21,6 @@ export default async function (fastify, opt) {
 
   fastify.register(Static, {
     root: join(__dirname, 'public'),
-    prefix: '/public/'
   })
 
   fastify.get('/', (request, reply) => {
@@ -36,8 +35,9 @@ export default async function (fastify, opt) {
     }
 
     const collection = collectionMap[type]
-
-    reply.send(collection.slice(offset, offset + limit))
+    console.log(type, offset, limit)
+    collection.data.filter(item => !item.images).forEach(item => console.log(item))
+    reply.send({data: collection.data.slice(parseInt(offset), parseInt(offset) + parseInt(limit)), total: collection.total})
   })
 
   fastify.addHook('onReady', async () => {
