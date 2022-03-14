@@ -22,14 +22,18 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+      - name: Use pnpm
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: ^6.32.2
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
       - name: create env file
         run: |
           touch .env
           echo BANGUMI_USER=${{ secrets.BANGUMI_USER }} >> .env
       - name: Build Subject
-        run: npm run buildSubject
+        run: pnpm buildSubject
       - name: Commit files
         run: |
           git config --local user.email "$(git log --format='%ae' HEAD^!)"
