@@ -1,5 +1,6 @@
 import { dirname } from 'path'
 import { existsSync, mkdirSync, writeFileSync } from 'fs'
+import 'dotenv/config'
 import axios from 'axios'
 
 const bgmUser = process.env.BANGUMI_USER || 'geekaven'
