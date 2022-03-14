@@ -40,6 +40,17 @@ export default async function (fastify, opt) {
     reply.send({data: collection.data.slice(parseInt(offset), parseInt(offset) + parseInt(limit)), total: collection.total})
   })
 
+  fastify.get('/bangumi_total', (request, reply) => {
+    const res = {}
+    for (const key in collectionMap) {
+      if (Object.hasOwnProperty.call(collectionMap, key)) {
+        const collection = collectionMap[key];
+        res[key] = collection.total
+      }
+    }
+    reply.send(res)
+  })
+
   fastify.addHook('onReady', async () => {
     for (const key in collectionMap) {
       if (Object.hasOwnProperty.call(collectionMap, key)) {
