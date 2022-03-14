@@ -35,14 +35,6 @@ jobs:
       - name: Build Subject
         run: pnpm buildSubject
       - name: Commit files
-        run: |
-          git config --local user.email "$(git log --format='%ae' HEAD^!)"
-          git config --local user.name "$(git log --format='%an' HEAD^!)"
-          git remote add github "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
-          git pull github ${GITHUB_REF} --ff-only
-          git add .
-          if [ -z "$(git status --porcelain)" ]; then
-            exit 0
-          fi
-          git commit -m "Update user collection"
-          git push github HEAD:${GITHUB_REF}
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Auto build subject
