@@ -1,6 +1,7 @@
 let bangumiUrl = apiUrl
 
 const limit = 12
+const load = `<img style="margin: 0 auto;" src="https://cdn.jsdelivr.net/gh/hans362/Bilibili-Bangumi-JS/assets/bilibili.gif">`
 
 function getTab() {
   const types = {
@@ -76,6 +77,7 @@ function getPage(pageNum, type) {
 function tabClick(event) {
   $('.bgm-collection').empty()
   $('.bgm-navigator').remove()
+  $('.bgm-collection').append(load)
   const el = event.target
   el.classList.add('bgm-active')
   document.querySelectorAll('.bgm-tab').forEach(function (item) {
@@ -91,7 +93,7 @@ function init() {
   $('.bgm-container').append(`<div class="bgm-tabs"></div>`)
   $(".bgm-container").append(`
     <div class="bgm-collection" id="bgm-collection">
-      <img style="margin: 0 auto;" src="https://cdn.jsdelivr.net/gh/hans362/Bilibili-Bangumi-JS/assets/bilibili.gif">
+      ${load}
     </div>`
   )
   getTab()
