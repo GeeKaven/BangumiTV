@@ -7,34 +7,43 @@
 ## 起源
 
 ## Demo
-* https://bangumi-tv.vercel.app
+-   https://bangumi-tv.vercel.app
 
 ## 安装
 ### 后端安装
 #### 方案一：Vercel
-1. Fork本项目
-2. 在本项目`Settings -> Secrets -> Actions`中点击`New repository secret`，`Name` 填 `BANGUMI_USER`，`Value` 填 `你的bgm.tv的用户名`，之后点击`Add secret`按钮
-3. 前往 Vercel 官网注册或登录。
+1.  Fork 本项目
+2.  在本项目 `Settings -> Secrets -> Actions` 中点击 `New repository secret`，`Name` 填 `BANGUMI_USER`，`Value` 填 ` 你的 bgm.tv 的用户名 `，之后点击 `Add secret` 按钮
+3.  前往 Vercel 官网注册或登录。
 在 Vercel Dashboard 中点击 New Project，授权 GitHub，选择账户下 Fork 出来的本项目，点击 Deploy 完成部署。
-4. 记录下 Vercel 分配的 Production 域名（如 bangumi-tv.vercel.app）
+4.  记录下 Vercel 分配的 Production 域名 ( 如 bangumi-tv.vercel.app )
 
-**⚠️Github Action 会每两小时读取用户收藏状况生成数据，如需要可在.github/workflows/buildSubject.yml 中修改 cron**
+**⚠️Github Action 会每两小时读取用户收藏状况生成数据，如需要可在。github/workflows/buildSubject.yml 中修改 cron**
 
 #### 方案二：自建服务器
-1. Clone本项目
-2. 安装Node环境
-3. 运行`npm install` 或 `pnpm install`安装依赖
-4. 设置环境变量
+1.  Clone 本项目
+2.  安装 Node 环境
+3.  运行 `npm install` 或 `pnpm install` 安装依赖
+4.  设置环境变量
    ```shell
-   echo "BANGUMI_USER={你的bgm.tv用户名}" >> .env
+   echo "BANGUMI_USER={你的 bgm.tv 用户名}" >> .env
    ```
-5. 生成追番数据 `npm run buildSubject` 或者 `pnpm buildSubject`
-6. 启动服务 `npm run start` 或者 `pnpm start`
-7. 服务运行在`localhost:3000`上，服务器域名，SSL等自行设置
+5.  生成追番数据 `npm run buildSubject` 或者 `pnpm buildSubject`
+6.  启动服务 `npm run start` 或者 `pnpm start`
+7.  服务运行在 `localhost:3000` 上，服务器域名，SSL 等自行设置
 
 ### 前端安装
-在需要添加追番列表的页面中直接引入 CSS 和 JS。
+在需要添加追番列表的页面中直接引入 CSS 。
 ```html
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bangumi-tv@latest/dist/bangumi.css">
+<script>
+  var apiUrl = "https://bangumi-tv.vercel.app";  // 替换成自己的后端域名
+</script>
+```
+在 `</body>` 之前引入 JS
+```html
+<script src="https://cdn.jsdelivr.net/npm/bangumi-tv@latest/dist/bangumi.js"></script>
 ```
 
 引入完成后在需要添加番剧进度的地方添加容器
@@ -44,7 +53,7 @@
 ```
 
 ## 感谢❤️
-* [bangumi/api](https://github.com/bangumi/api) 提供API
-* [hans362/Bilibili-Bangumi-JS](https://github.com/hans362/Bilibili-Bangumi-JS) 提供前端展示逻辑
-* [AlanDecode/PandaBangumi-Typecho-Plugin](https://github.com/AlanDecode/PandaBangumi-Typecho-Plugin) 提供前端展示样式
-* [HCLonely/hexo-bilibili-bangumi](https://github.com/HCLonely/hexo-bilibili-bangumi) 提供分页逻辑
+-   [bangumi/api](https://github.com/bangumi/api) 提供 API
+-   [hans362/Bilibili-Bangumi-JS](https://github.com/hans362/Bilibili-Bangumi-JS) 提供前端展示逻辑
+-   [AlanDecode/PandaBangumi-Typecho-Plugin](https://github.com/AlanDecode/PandaBangumi-Typecho-Plugin) 提供前端展示样式
+-   [HCLonely/hexo-bilibili-bangumi](https://github.com/HCLonely/hexo-bilibili-bangumi) 提供分页逻辑
