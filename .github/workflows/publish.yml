@@ -20,6 +20,6 @@ jobs:
       - name: Install dependencies and build 🔧
         run: pnpm install && pnpm build
       - name: Publish package on NPM 📦
-        run: pnpm publish
+        run: pnpm publish --publish-branch main
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
