@@ -1,5 +1,5 @@
 {
-  "name": "bangumitv",
+  "name": "bangumi-tv",
   "version": "0.0.1",
   "description": "render your bangumi.tv progress on a static web page",
   "main": "index.js",
