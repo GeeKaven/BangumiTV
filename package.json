@@ -1,6 +1,6 @@
 {
   "name": "bangumitv",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "render your bangumi.tv progress on a static web page",
   "main": "index.js",
   "type": "module",
@@ -34,5 +34,6 @@
   },
   "devDependencies": {
     "esbuild": "^0.14.27"
-  }
+  },
+  "files": ["dist", "LICENSE", "README.md"]
 }
