@@ -20,9 +20,12 @@ jobs:
       - name: Install dependencies and build 🔧
         run: pnpm install && pnpm build
       - name: Publish package on NPM 📦
-        run: npm publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           token: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo $NODE_AUTH_TOKEN
+          npm publish --access=public
+        
         
