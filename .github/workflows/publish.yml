@@ -17,8 +17,6 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Setup npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
       - name: Install dependencies and build 🔧
         run: pnpm install && pnpm build
       - name: Publish package on NPM 📦
