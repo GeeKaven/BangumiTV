@@ -1,6 +1,6 @@
 {
   "name": "bangumi-tv",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "render your bangumi.tv progress on a static web page",
   "main": "index.js",
   "type": "module",

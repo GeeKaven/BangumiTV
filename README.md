@@ -35,7 +35,6 @@
 ### 前端安装
 在需要添加追番列表的页面中直接引入 CSS 。
 ```html
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bangumi-tv@latest/dist/bangumi.css">
 <script>
   var apiUrl = "https://bangumi-tv.vercel.app";  // 替换成自己的后端域名
