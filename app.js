@@ -35,7 +35,6 @@ export default async function (fastify, opt) {
     }
 
     const collection = collectionMap[type]
-    collection.data.filter(item => !item.images).forEach(item => console.log(item))
     reply.send({data: collection.data.slice(parseInt(offset), parseInt(offset) + parseInt(limit)), total: collection.total})
   })
 
