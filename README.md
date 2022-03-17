@@ -2,6 +2,8 @@
 
 > 在静态页面中渲染你的 Bangumi 追番进度
 
+[![](https://img.shields.io/npm/v/bangumi-tv)](https://www.npmjs.com/package/bangumi-tv) [![](https://img.shields.io/badge/Author-GeeKaven-blueviolet)](https://github.com/GeeKaven) [![](https://img.shields.io/npm/l/bangumi-tv)](https://github.com/geekaven/BangumiTV/blob/main/LICENSE) [![](https://data.jsdelivr.com/v1/package/npm/bangumi-tv/badge)](https://www.jsdelivr.com/package/npm/bangumi-tv)
+
 一个基于 Vercel Severless Function 的 [Bangumi.tv](https://bgm.tv) 追番进度展示页面
 
 ## 起源
