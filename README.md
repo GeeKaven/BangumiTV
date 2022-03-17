@@ -39,7 +39,10 @@
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bangumi-tv@latest/dist/bangumi.css">
 <script>
-  var apiUrl = "https://bangumi-tv.vercel.app";  // 替换成自己的后端域名
+  const bgmConfig = {
+      apiUrl: "https://bangumi-tv.vercel.app",   // 替换成自己的后端域名
+      quote: "生命不止，追番不息！"
+    }
 </script>
 ```
 在 `</body>` 之前引入 JS

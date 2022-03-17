@@ -1,4 +1,6 @@
-let bangumiUrl = apiUrl
+
+const bangumiUrl = bgmConfig.apiUrl
+const quote = bgmConfig.quote
 
 const limit = 12
 const load = `<img style="margin: 0 auto;" src="https://cdn.jsdelivr.net/gh/hans362/Bilibili-Bangumi-JS/assets/bilibili.gif">`
@@ -126,6 +128,9 @@ function getJSON(url, callback) {
 }
 
 function init() {
+  if (quote) {
+    document.querySelector('.bgm-container').insertAdjacentHTML('beforeend',`<blockquote><p>${quote}</p></blockquote>`)
+  }
   document.querySelector('.bgm-container').insertAdjacentHTML('beforeend', `<div class="bgm-tabs"></div>`)
   document.querySelector('.bgm-container').insertAdjacentHTML('beforeend', `
     <div class="bgm-collection" id="bgm-collection">
