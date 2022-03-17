@@ -16,7 +16,7 @@
 
 .bgm-active {
   background: #00a1d6;
-  color: #fff;
+  color: #fff !important;
 }
 
 .bgm-collection {
@@ -36,7 +36,7 @@
   transition: 0.3s ease box-shadow;
   border: none !important;
   text-decoration: none !important;
-  background: #fff;
+  background: #fff !important;
 }
 
 .bgm-item:hover {
