@@ -57,6 +57,7 @@
 ```
 
 ## 感谢❤️
+-   [Bangumi-Subject](https://github.com/GeeKaven/BangumiTV-Subject) 离线Bgm数据
 -   [bangumi/api](https://github.com/bangumi/api) 提供 API
 -   [hans362/Bilibili-Bangumi-JS](https://github.com/hans362/Bilibili-Bangumi-JS) 提供前端展示逻辑
 -   [AlanDecode/PandaBangumi-Typecho-Plugin](https://github.com/AlanDecode/PandaBangumi-Typecho-Plugin) 提供前端展示样式
