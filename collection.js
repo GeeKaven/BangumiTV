@@ -82,6 +82,7 @@ async function buildSubject() {
       for (let i = 0; i < data.length; i++) {
         const item = data[i];
         const subjectId = parseInt(item['subject_id'])
+        delete data[i].subject;
         try {
           console.log(`- [INFO] Fetch ${key} - ${subjectId}. ${i}/${data.length}`)
           const { data: subject } = await axios.get(`https://cdn.jsdelivr.net/gh/geekaven/BangumiTV-Subject@latest/data/${Math.floor(subjectId / 100)}/${subjectId}.json`, { headers: headers })

@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
   axios: ^0.26.1
@@ -303,6 +303,11 @@ packages:
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
     dependencies:
       ms: 2.0.0
     dev: true
@@ -703,6 +708,8 @@ packages:
       p-limit: 3.1.0
       readable-stream: 3.6.0
       send: 0.17.2
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /fastify/3.27.4:
@@ -1328,6 +1335,8 @@ packages:
       on-finished: 2.3.0
       range-parser: 1.2.1
       statuses: 1.5.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /set-cookie-parser/2.4.8:
