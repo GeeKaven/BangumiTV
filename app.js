@@ -38,6 +38,16 @@ export default async function (fastify, opt) {
     reply.send({data: collection.data.slice(parseInt(offset), parseInt(offset) + parseInt(limit)), total: collection.total})
   })
 
+  fastify.get('/v2/bangumi', (request, reply) => {
+    const {type, page, size} = request.query
+    if (!collectionMap[type]) {
+      reply.send({ msg: `No collection ${type}` }).statusCode(404)
+    }
+
+    const collection = collectionMap[type]
+    reply.send({data: collection.data.slice((parseInt(page) - 1) * size, parseInt(page) * parseInt(size)), total: collection.total})
+  })
+
   fastify.get('/bangumi_total', (request, reply) => {
     const res = {}
     for (const key in collectionMap) {
