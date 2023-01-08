@@ -155,6 +155,7 @@ async function buildCalendar() {
       items: d['items'].map((item) => {
         delete item['collection']
         delete item['rating']
+        delete item['rank']
         return item
       }),
     }
