@@ -149,15 +149,20 @@ async function fetchCalendar() {
 async function buildCalendar() {
   const data = await fetchCalendar()
 
-  data.map((d) => {
-    return {
-      weekday: d['weekday'],
-      items: d['items'].map((item) => {
+  const newData = data.map((d) => {
+    // 去除国产动画
+    const filterItems = d['items']
+      .filter((item) => item['name_cn'] !== '')
+      .map((item) => {
         delete item['collection']
         delete item['rating']
         delete item['rank']
         return item
-      }),
+      })
+
+    return {
+      weekday: d['weekday'],
+      items: filterItems,
     }
   })
 
@@ -167,7 +172,7 @@ async function buildCalendar() {
     mkdirSync(dirName, { recursive: true })
   }
   console.log(`- [INFO] Write Calendar to ${filePath}`)
-  writeFileSync(filePath, JSON.stringify(data))
+  writeFileSync(filePath, JSON.stringify(newData))
 
   console.log('- [INFO] Build Calendar done.')
 }
