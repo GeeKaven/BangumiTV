@@ -37,3 +37,5 @@ jobs:
         with:
           commit_message: Auto build subject
           commit_author: github-actions[bot]
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
