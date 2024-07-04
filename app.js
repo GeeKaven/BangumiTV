@@ -1,8 +1,8 @@
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import { readFileSync } from 'fs'
-import Cors from 'fastify-cors'
-import Static from 'fastify-static'
+import Cors from '@fastify/cors'
+import Static from '@fastify/static'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
