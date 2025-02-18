@@ -1,0 +1,42 @@
+name: Build Subject
+
+on:
+  schedule:
+    # Run “at minute 0 past every 2nd hour.” (see https://crontab.guru)
+    - cron: '0 */2 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          # cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: create env file
+        run: |
+          touch .env
+          echo BANGUMI_USER=${{ secrets.BANGUMI_USER }} >> .env
+      - name: Build Subject
+        run: pnpm buildSubject
+      - name: Commit files
+        run: |-
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git pull
+          git add -A
+          git commit -m "update bgm ~" || exit 0
+          git push
